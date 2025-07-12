@@ -21,7 +21,7 @@ with open ("data/textFiles/idx_to_word.pkl", 'rb') as file:
 
 
 print("Loading the model...")
-model = load_model('model_checkpoints/model_19.h5')
+model = load_model('model/model_19.h5')
 
 
 

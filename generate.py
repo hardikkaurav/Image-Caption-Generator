@@ -11,7 +11,6 @@ from keras.applications.resnet50 import ResNet50, preprocess_input, decode_predi
 from keras.models import Model
 
 
-
 # Read the files word_to_idx.pkl and idx_to_word.pkl to get the mappings between word and index
 word_to_index = {}
 with open ("data/textFiles/word_to_idx.pkl", 'rb') as file:
