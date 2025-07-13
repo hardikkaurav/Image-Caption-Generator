@@ -1,29 +1,28 @@
 import json
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import pickle
+import tensorflow as tf
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 import collections
 
 
 
 # Read the files word_to_idx.pkl and idx_to_word.pkl to get the mapping between word and index
 word_to_index = {}
-with open ("data/textFiles/word_to_idx.pkl", 'rb') as file:
+with open ("word_to_idx.pkl", 'rb') as file:
     word_to_index = pd.read_pickle(file)
 
 index_to_word = {}
-with open ("data/textFiles/idx_to_word.pkl", 'rb') as file:
+with open ("idx_to_word.pkl", 'rb') as file:
     index_to_word = pd.read_pickle(file)
 
 
 
 print("Loading the model...")
-model = load_model('model/model_19.h5')
-
-
+model = load_model("model/model_19.keras")
 
 test_encoding = {}
 with open("encoded_test_features.pkl", "rb") as file:
@@ -65,7 +64,7 @@ photo = test_encoding[img_ID].reshape((1, 2048))
 print("Running model to genrate the caption...")
 caption = predict_caption(photo)
 
-img_data = plt.imread("data/Images/" + img_ID + ".jpg")
+img_data = plt.imread("Images/" + img_ID + ".jpg")
 plt.imshow(img_data)
 plt.axis("off")
 
